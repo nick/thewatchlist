@@ -1,0 +1,11 @@
+
+        <meta property="og:title" content="<%= movie.title %>" />
+	<meta property="og:type" content="thewatchlist:movie" />
+	<meta property="og:image" content="<%= movie.largeImage %>" />
+	<meta property="og:url" content="http://www.watchlistapp.com/graph/movie/<%= movie.rottenId %>" />
+	<meta property="og:description" content="<%= movie.criticsConsensus || movie.synopsis %>" />
+
+	<meta property="video:release_date" content="<%= movie.releaseDate.getFullYear() %>-<%= movie.releaseDate.getMonth() + 1 %>-<%= movie.releaseDate.getDay() %>" />
+	<meta property="video:duration" content="<%= movie.runTime %>" />
+	<meta property="fb:admins" content="61303135" />
+	<meta property="fb:app_id" content="358904677456171" />

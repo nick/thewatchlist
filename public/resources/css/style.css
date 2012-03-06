@@ -1,0 +1,93 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+}
+
+body {
+    background: #2f0000;
+    color: #898989;
+    font-family: 'Helvetica Neue', 'Helvetica', sans;
+}
+h1, h2, h3, h4 {
+    color: #fff;
+}
+.wrap {
+    margin: auto;
+    position: relative;
+    width: 980px;
+    min-height: 800px;
+    font-size: 13px;
+}
+
+iframe {
+    border: 0;
+    width: 320px;
+    height: 460px;
+    top: 134px;
+    left: 104px;
+    position: absolute;
+}
+
+.right {
+    margin-left: 500px;
+    top: 140px;
+    position: absolute;
+    width: 365px;
+    line-height: 1.5em;
+}
+.right h3 {
+    display: none;
+}
+.right h4 {
+    margin-top: 30px;
+}
+.right a {
+    display: block;
+    margin-top: 30px;
+    width: 361px;
+    height: 41px;
+    background: url(../images/learn-btn.png) no-repeat;
+    text-indent: -9999px;
+}
+
+.footer {
+    position: absolute;
+    top: 650px;
+    padding: 0 60px;
+    text-align: center;
+    font-size: 20px;
+    font-weight: normal;
+    line-height: 1.5em;
+}
+.footer a {
+    color: #898989;
+}
+
+.phone {
+    background: url(../images/phone-bg.jpg) no-repeat;
+    height: 606px;
+    width: 539px;
+}
+
+h1 {
+    background: url(../images/header.png) no-repeat;
+    text-indent: -9999px;
+    height: 112px;
+    width: 365px;
+}

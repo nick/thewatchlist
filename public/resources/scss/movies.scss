@@ -1,0 +1,847 @@
+
+$bg-sprite-image:   "../images/bg-sprites.png";
+$icon-sprite-image: "../images/icon-sprites.png";
+$splash-image:      "../images/splashimg.png";
+$font-root:         "../fonts";
+
+// Watchlist Sass file
+
+$page-bg-color: #232323;
+$include-default-icons: false;
+
+@import 'sencha-touch/default/all';
+
+@include sencha-layout;
+@include sencha-panel;
+
+@include sencha-loading-spinner;                         // ANDROID PERFORMANCE
+
+@mixin background-sprite($x, $y) {
+    background: url($bg-sprite-image) repeat-x;
+    background-size: 1px 558px;
+
+    @if $x != null { background-position-x: $x; }
+    @if $y != null { background-position-y: $y; }
+}
+
+@mixin icon-sprite($x, $y) {
+    background: url($icon-sprite-image) no-repeat;
+    background-size: 219px 76px;
+    @if $x != null { background-position-x: $x; }
+    @if $y != null { background-position-y: $y; }
+}
+
+.x-scroll-indicator {
+    background: #ccc;
+}
+
+.x-scroll-indicator-csstransform {
+    > * {
+        background-color: #aaa;
+    }
+
+    > :nth-child(2) {
+        content: url(data:image/bmp;base64,Qk0gAAAAAAAAABoAAAAMAAAAAQABAAEAGACqqqoAAAA%3D);
+    }
+}
+
+// Loading screen
+
+body {
+    color: #fff;
+    background-color: #232323;
+    font-family: 'PT Sans', sans-serif;
+}
+
+body.splashBg {                                         // ANDROID PERFORMANCE
+    @include background-image(linear-gradient(#610100, #2f0000));
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+#loading {
+    color: #7a5453;
+    font-size: 120%;
+    position: absolute;
+    width: 110px;
+    left: 50%;
+    margin: 75% 0 0 -30px;
+    .x-loading-spinner {
+        font-size: 160%;
+        margin: -27px 0 0 -45px;
+    }
+}
+
+#splashLoader {
+
+    background: url($splash-image) no-repeat center 25%; // ANDROID PERFORMANCE
+    background-size: contain;                            // ANDROID PERFORMANCE
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.tabletSplash {
+    background: url($splash-image) no-repeat center 25%; // ANDROID PERFORMANCE
+    background-size: contain;                            // ANDROID PERFORMANCE
+}
+
+.loggedOut {
+    background: transparent;
+}
+
+.loginScreen {
+    top: 70%;
+    background: transparent;
+}
+
+.fbLogin {
+    @include background-sprite(0, -147px);
+
+    margin-bottom: 15px;
+    width: 230px;
+    line-height: 35px;
+    text-align: center;
+    border-radius: 3px;
+    &.x-button-pressing,
+    &.x-button-pressed {
+        background-position-y: -183px;
+    }
+}
+
+
+
+// Logged Out List
+
+.x-list-header {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: normal;
+    color: #acacac;
+    line-height: 29px;
+    font-size: 75%;
+    padding-left: 10px;
+}
+
+.x-list {
+    // background-color: #232323;
+}
+.x-list-inner {
+    width: 100%;
+}
+
+.x-list-header {
+    position: relative;
+    top: -1px;
+}
+.x-list-item {
+    border-bottom: 2px solid #000;
+    cursor: pointer;
+}
+.x-list-item.x-item-selected .x-list-item-label {
+    @include background-image(linear-gradient(#5b5b5b, #3f3f3f));
+}
+.x-list-emptytext {
+    text-align: center;
+    font-size: 140%;
+    padding: 15px;
+}
+
+
+// Logged In List
+
+.sort {
+    @include background-sprite(0, -333px);
+    height: 48px;
+}
+
+.search {
+
+    @include background-sprite(0, -381px);
+
+    height: 50px;
+
+    .x-form-label {
+        display: none;
+    }
+    .x-component-outer {
+        width: 100%;
+        padding: 8px;
+    }
+    .x-clear-icon {
+        @include icon-sprite(-171px, -46px);
+        display: none;
+        width: 23px;
+        height: 23px;
+        top: 5px;
+        right: 3px;
+        position: absolute;
+    }
+    .x-field-clearable .x-clear-icon {
+        display: block !important;
+    }
+    .x-field-input {
+        position: relative;
+    }
+}
+
+input.searchField {
+    width: 100%;
+    @include background-sprite(0, -64px);
+    border: 0;
+    height: 31px;
+    padding-left: 5px;
+    border-top-left-radius: 6px 4px;
+    border-top-right-radius: 6px 4px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+.x-button {
+    font-family: 'PT Sans Narrow', sans-serif;
+    cursor: pointer;
+    position: relative;
+
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+    -webkit-box-pack: center;
+    -webkit-box-align: center;
+
+    -webkit-background-clip: padding;
+
+    &.x-button-decline {
+        @include background-image(linear-gradient(#c04800, #83210a));
+        border-radius: 5px;
+        padding: 5px;
+    }
+}
+
+.x-toolbar {
+    position: relative;
+    .x-button {
+        @include background-sprite(0, 0);
+
+        .x-button-icon {
+            display: block;
+        }
+        &.x-button-pressing,
+        &.x-button-pressed {
+            background-position-y: -32px;
+        }
+    }
+}
+
+.x-toolbar.small {
+    z-index: 3;
+
+    @include background-sprite(0, -220px);
+
+    height: 51px;
+    margin-bottom: -4px;
+
+    .x-toolbar-inner {
+        margin-top: -3px;
+    }
+
+    .headerTitle {
+        @include icon-sprite(0, -45px);
+        margin: auto;
+        width: 105px;
+        height: 30px;
+    }
+}
+
+.x-button.movies {
+
+    width: 38px;
+    height: 30px;
+
+    border-radius: 3px 0 0 3px;
+    margin-left: 8px;
+
+    .x-button-icon {
+        width: 20px;
+        height: 12px;
+
+        @include icon-sprite(-85px, 0);
+    }
+    &.x-button-pressing .x-button-icon,
+    &.x-button-pressed .x-button-icon {
+        background-position-y: -23px;
+    }
+}
+
+.x-button.friends {
+
+    width: 38px;
+    height: 30px;
+
+    border-radius: 0 3px 3px 0;
+
+    .x-button-icon {
+        @include icon-sprite(-59px, 0);
+        width: 26px;
+        height: 18px;
+    }
+    &.x-button-pressing .x-button-icon,
+    &.x-button-pressed .x-button-icon {
+        background-position-y: -23px;
+    }
+}
+
+.x-button.searchBtn {
+
+    width: 33px;
+    height: 30px;
+
+    border-radius: 3px;
+    margin-right: 5px;
+
+    .x-button-icon {
+        @include icon-sprite(-39px, 0);
+        width: 20px;
+        height: 20px;
+    }
+    &.x-button-pressing .x-button-icon,
+    &.x-button-pressed .x-button-icon {
+        background-position-y: -23px;
+    }
+}
+
+.fbProfilePic {
+    margin-right: 8px;
+    position: relative;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+
+    img {
+        width: 30px;
+        height: 30px;
+        border-radius: 3px;
+    }
+}
+
+.x-button.shareBtn {
+
+    width: 33px;
+    height: 30px;
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 5px 3px;
+    border-bottom-right-radius: 5px 3px;
+
+    margin-right: 8px;
+
+    .x-button-icon {
+        @include icon-sprite(-172px, 0);
+        width: 16px;
+        height: 19px;
+    }
+    &.x-button-pressing .x-button-icon,
+    &.x-button-pressed .x-button-icon {
+        background-position-y: -23px;
+    }
+}
+
+
+.thumb {
+    padding: 0 12px;
+    b {
+        display: block;
+        @include icon-sprite(0, 0);
+        width: 19px;
+        height: 21px;
+    }
+    .up:active b,
+    &.selected.up b {
+        background-position: 0 -23px;
+    }
+    &.down b {
+        background-position: -19px 0;
+    }
+    .down:active b,
+    &.selected.down b {
+        background-position: -19px -23px;
+    }
+}
+
+.x-list-item.expandedMovie .x-list-item-label {
+
+    height: 114px;
+    padding: 12px 14px;
+
+    width: 100%;                                                // ANDROID PERFORMANCE
+    position: relative;                                         // ANDROID PERFORMANCE
+
+    .moreArrow {
+        // display: none;                                       // ANDROID PERFORMANCE
+        @include icon-sprite(-106px, 0);
+        width: 8px;
+        height: 12px;
+        position: absolute;
+        right: 10px;
+        top: 51px;
+    }
+
+    div.img {
+        border: 1px solid #fff;
+        border-radius: 3px;
+        float: left;
+        height: 89px;
+        overflow: hidden;
+        img {
+            border-radius: 2px;
+            width: 58px;
+        }
+    }
+    .meta {
+        margin-left: 70px;
+        h3 {
+            font-family: 'PT Sans Narrow', sans-serif;
+            font-size: 95%;
+
+            line-height: 25px;
+            font-weight: bold;
+            margin-bottom: 7px;
+
+            overflow : hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+        .actions {
+            min-height: 36px;
+            p {
+                color: #848484;
+                line-height: 16px;
+                font-size: 70%;
+            }
+        }
+        .friends {
+            color: #a1a1a1;
+            font-size: 70%;
+            img {
+                width: 20px;
+                border: 0;
+                border-radius: 0;
+                margin-right: 5px;
+                vertical-align: -4px;
+            }
+        }
+    }
+}
+
+
+.rating {
+    font-family: 'PT Sans Narrow', sans-serif;
+    line-height: 30px;
+    font-size: 80%;
+    span {
+        display: block;
+        float: left;
+        color: #f0910c;
+        background: #191919;
+        width: 36px;
+        text-align: center;
+        border-radius: 3px;
+        margin-right: 4px;
+    }
+}
+
+button {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: bold;
+    font-size: 85%;
+    padding: 0 7px;
+    border: 0;
+    display: block;
+    float: left;
+    height: 30px;
+    line-height: 30px;
+
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    border-bottom-left-radius: 5px 3px;
+    border-bottom-right-radius: 5px 3px;
+
+    @include background-sprite(0, -273px);
+
+    color: #b3b3b3;
+    text-shadow: 0 -1px 1px rgba(0, 0, 0, 0.5);                           // ANDROID PERFORMANCE
+    cursor: pointer;
+
+    &:active {
+        background-position-y: -304px;
+    }
+
+    &.selected {
+        color: #80a925;
+    }
+}
+
+// Movie Detail
+
+
+.x-button.backBtn {
+    @include icon-sprite(-124px, 0);
+
+    margin-left: 5px;
+    border-radius: 3px;
+    padding: 0 23px;
+    height: 31px;
+    &.x-button-pressing,
+    &.x-button-pressed {
+        @include icon-sprite(-124px, -33px);
+    }
+}
+
+.movieDetail {
+    margin: 14px 13px;
+    color: #a1a1a1;
+    height: 190px;
+
+    position: relative;
+    overflow: hidden;
+
+    div.img {
+        border: 1px solid #fff;
+        border-radius: 2px;
+        margin: 0 10px 10px 0;
+        height: 187px;
+        overflow: hidden;
+
+        img {
+            border-radius: 2px;
+            width: 125px;
+        }
+    }
+
+    .left {
+        float: left;
+    }
+
+    h3 {
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-weight: bold;
+        font-size: 90%;
+        padding: 5px 0;
+        color: #fff;
+    }
+
+    .rating {
+        margin-bottom: 10px;
+        color: #a1a1a1;
+    }
+
+    .actions {
+        min-height: 70px;
+    }
+
+    .consensus {
+        padding: 5px;
+        font-style: italic;
+    }
+
+    .synopsis, .consensus {
+        font-size: 65%;
+    }
+
+    .extraInfo {
+        font-size: 65%;
+        clear: both;
+        display: -webkit-box;
+        -webkit-box-orient: horizontal;
+
+        &>div:nth-child(1) {
+            width: auto;
+            max-width: 50%;
+            padding-right: 10px;
+        }
+        &>div:nth-child(2) {
+            -webkit-box-flex: 1;
+        }
+
+        p {
+            padding-top: 6px;
+        }
+    }
+
+    &.ellipsis {
+
+        .synopsis {
+            overflow : hidden;
+            text-overflow: ellipsis;
+            display: -webkit-box;
+            -webkit-line-clamp: 6;
+            -webkit-box-orient: vertical;
+        }
+        .consensus {
+            visibility: hidden;
+        }
+        .extraInfo {
+            visibility: hidden;
+        }
+
+        .moreArrow {
+            position: absolute;
+            @include icon-sprite(-106px, -23px);
+
+            width: 12px;
+            height: 8px;
+
+            bottom: 0;
+            left: 70%;
+        }
+    }
+
+    .trailer {
+        font-size: 70%;
+        text-align: center;
+
+        display: block;
+        line-height: 20px;
+        height: auto;
+
+        color: #80a925;
+
+        text-transform: uppercase;
+        text-decoration: none;
+        width: 125px;
+    }
+
+    &.tablet {
+
+        height: auto;
+
+        .actions {
+            padding-top: 15px;
+            padding-bottom: 5px;
+            min-height: 40px;
+        }
+        .rating {
+            line-height: 40px;
+
+            span {
+                margin-right: 8px;
+                font-size: 130%;
+                width: 66px;
+            }
+        }
+        button {
+            margin-right: 8px;
+            padding: 0 9px;
+            font-size: 120%;
+            line-height: 40px;
+            font-weight: normal;
+            height: 40px;
+            background-size: 1px 743px;
+            background-position-y: -364px;
+        }
+        button.trailer {
+            font-size: 70%;
+            line-height: 30px;
+            height: 30px;
+        }
+
+        .actions,
+        .synopsis,
+        .consensus,
+        .extraInfo {
+            margin-left: 150px;
+        }
+
+        .synopsis,
+        .consensus,
+        .extraInfo {
+            font-size: 75%;
+            line-height: 115%;
+        }
+    }
+}
+
+.fbActivity {
+    border-top: 2px solid #000;
+    font-size: 65%;
+    img {
+        width: 28px;
+        height: 28px;
+        vertical-align: -9px;
+        margin-right: 7px;
+    }
+    .x-list-item {
+
+        color: #a1a1a1;
+        b {
+            color: #fff;
+        }
+
+        .x-list-item-label {
+            padding: 8px 12px;
+            overflow : hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+    }
+}
+
+
+.x-list-paging {
+    height: 50px;
+    .x-list-paging-msg {
+        line-height: 50px;
+        position: absolute;
+        margin-left: -45px;
+        left: 50%;
+    }
+    .x-loading-spinner {
+        display: none;
+        position: absolute;
+        left: 50%;
+        margin-left: -90px !important;
+    }
+    &.x-loading {
+        .x-loading-spinner {
+            display: block;
+        }
+    }
+}
+
+
+.x-title {
+    font-family: 'PT Sans Narrow', sans-serif;
+    font-weight: bold;
+    font-size: 120%;
+    max-width: 100%;
+    .x-innerhtml {
+        padding: 0 0.3em;
+        overflow : hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+}
+
+.x-msgbox, .dialog {
+
+    min-width: 15em;
+    max-width: 20em;
+    padding: 1.2em 1.8em;
+    font-size: 80%;
+    line-height: 1.1em;
+    border: 5px solid #c2c2c2;
+    border-radius: 5px;
+    background: #fff;
+    color: #000;
+
+    font-family: "Helvetica Neue", Helvetica;
+
+    .msg {
+        margin-bottom: 0.6em;
+        text-align: center;
+        p {
+            margin-bottom: 0.6em;
+        }
+
+    }
+
+    .x-button-red,
+    .x-button-green {
+        margin-top: 0.3em;
+        line-height: 30px;
+        border-radius: 5px;
+        padding: 0 20px;
+        border: 0;
+        height: 30px;
+        color: #fff;
+        cursor: pointer;
+    }
+
+    .x-button-green {
+        @include background-sprite(0, -495px);
+    }
+    .x-button-red {
+        @include background-sprite(0, -526px);
+    }
+
+    .x-button-close {
+        position: absolute;
+        width: 25px;
+        height: 26px;
+        @include icon-sprite(-193px, 0);
+        top: -33px;
+        right: -41px;
+    }
+
+    .x-component-outer {
+        width: 100%;
+    }
+
+    .wallMessage {
+        margin-top: 5px;
+        margin-bottom: 10px;
+    }
+
+    input {
+        width: 100%;
+    }
+}
+
+.x-toolbar.sort {
+
+    .x-button:first-child {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 6px 4px;
+    }
+
+    .x-button:last-child {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 6px 4px;
+    }
+
+    .x-segmentedbutton {
+        margin: 0 8px;
+    }
+
+    .x-button {
+        font-size: 80%;
+        border-right: 1px solid #3d3d3d;
+        color: #222222;
+        margin: 10px 0;
+        text-align: center;
+        line-height: 30px;
+        font-family: 'PT Sans Narrow', sans-serif;
+
+        @include background-sprite(0, -432px);
+
+        &.x-button-pressing,
+        &.x-button-pressed {
+            color: #c5c5c5;
+            background-position-y: -463px;
+        }
+    }
+}
+
+.promo {
+    background: #000;
+    font-family: 'PT Sans Narrow', sans-serif;
+    color: #acacac;
+    padding: 10px;
+    font-size: 80%;
+
+    .logo {
+        @include icon-sprite(-106px, -45px);
+        display: inline-block;
+        width: 17px;
+        height: 24px;
+        margin-right: 8px;
+        vertical-align: middle;
+    }
+    button {
+        float: none;
+        display: inline;
+        margin-left: 8px;
+    }
+}
+

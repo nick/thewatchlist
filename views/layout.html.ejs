@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title><%- title %></title>
+        <%- body %>
+        <link rel="icon" type="image/png" href="/resources/images/favicon.png">
+        <link id="css" rel="stylesheet" type="text/css" href="/resources/css/style.css" />
+    </head>
+    <body>
+        <div class="wrap">
+            <div class="phone">
+                <% if (showDemo) { %><iframe src="<%- appUrl %>"></iframe><% } %>
+            </div>
+
+            <div class="right">
+                <h1>The Watch List</h1>
+                <h3>Share your favorite movies with friends</h3>
+
+                <h4>The Watch List makes movies social.</h3>
+                <p>Use The Watch List on your phone or tablet to connect with your friends
+                   on Facebook. See what they've watched, share what you've watched, and let
+                   everyone know your opinion</p>
+
+                <h4>Brought to you by Sencha Touch 2.</h4>
+                <p>We created this application to demonstrate the power and versatility of
+                   Touch 2, our updated touch development framework. Using Touch 2, we were
+                   able to design and build The Watch List in a single week. Boomtown.</p>
+
+                <a href="http://www.sencha.com/products/touch/">Lean about Sencha Touch</a>
+            </div>
+
+            <div class="footer">
+<% if (showDemo) { %>
+                Try me! For the touch experience, visit watchlistapp.com from a phone or tablet.
+<% } else { %>
+                To try The Watch List, visit <a href="http://www.watchlistapp.com">watchlistapp.com</a>
+                on a phone or tablet. You can also try the app via computer by switching to a Sencha
+                Touch / HTML5 compatable browser like
+                <a href="http://support.google.com/chrome/bin/answer.py?hl=en&amp;answer=95346">Chrome</a>
+                or <a href="http://www.apple.com/safari/download/">Safari</a>
+<% } %>
+            </div>
+        </div>
+    </body>
+</html>

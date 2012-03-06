@@ -1,0 +1,51 @@
+{
+    "name": "WL",
+    "js": [
+        {
+            "path": "sdk/sencha-touch.js"
+        },
+        {
+            "path": "app.js",
+            "update": "delta"
+        }
+    ],
+    "css": [
+        {
+            "path": "resources/css/movies.css",
+            "update": "delta"
+        }
+    ],
+    "appCache": {
+        "cache": [
+            "index.html",
+            "resources/images/favicon.png",
+            "resources/images/splashimg.png",
+            "resources/images/bg-sprites.png",
+            "resources/images/icon-sprites.png",
+            "http://fonts.googleapis.com/css?family=PT+Sans:400,700|PT+Sans+Narrow:400,700",
+            "http://www.youtube.com/player_api",
+            "https://connect.facebook.net/en_US/all.js"
+        ],
+        "network": [
+            "*"
+        ],
+        "fallback": []
+    },
+    "extras": [
+        "resources/images",
+        "resources/css/style.css"
+    ],
+    "buildPaths": {
+        "testing": "build/testing",
+        "production": "build/production",
+        "native": "build/native"
+    },
+    "archivePath": "archive",
+    "buildOptions": {
+        "product": "touch",
+        "minVersion": 3,
+        "debug": false,
+        "logger": "no"
+    },
+    "id": "e4c397a0-6725-11e1-84ca-4318b441aa32"
+}
